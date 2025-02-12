@@ -1,5 +1,6 @@
 import prisma from '@/lib/prisma'
 import { NextResponse, NextRequest } from 'next/server'
+import * as yup from 'yup';
 
 export async function GET(request: Request) { 
 
@@ -18,9 +19,33 @@ export async function GET(request: Request) {
   return NextResponse.json( todos );
 }
 
+
+const postSchema = yup.object({
+  description: yup.string().required(),
+  complete: yup.boolean().optional().default(false)
+})
+
 export async function POST(request: Request) { 
 
-  const body = await request.json();
+  try{
+    // const { complete, description } = await postSchema.validate((await request.json()));
+    const body = await postSchema.validate(await request.json(), { stripUnknown: true });
+    // const todo = await prisma.todo.create({ data: { complete, description } });
+    const todo = await prisma.todo.create({ data: body });
+    return NextResponse.json( todo )
+  }catch (error) {
+    return NextResponse.json( error, { status: 400 })
+  }
 
-  return NextResponse.json( body )
+}
+
+export async function DELETE( request: Request ) {
+
+  try {
+    await prisma.todo.deleteMany({ where: { complete: true }})  
+    return NextResponse.json('Borrados');
+  } catch (error) {
+    return NextResponse.json( error, { status: 400 })
+  }
+  
 }
