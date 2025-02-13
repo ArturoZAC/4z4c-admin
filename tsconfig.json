@@ -5,6 +5,10 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "noUnusedLocals": true, // Detecta variables no utilizadas
+    "noUnusedParameters": true, // Detecta parámetros no utilizados
+    "noImplicitReturns": true, // Asegura que todas las rutas de una función devuelvan un valor
+    "noFallthroughCasesInSwitch": true, // Evita casos no manejados en switch
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",

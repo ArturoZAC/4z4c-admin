@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import { createTodo, deleteCompletedTodos } from "../helpers/todos";
 // import { useRouter } from "next/navigation";
 import { addTodo, deleteCompleted } from "../actions/todos-action";
 
