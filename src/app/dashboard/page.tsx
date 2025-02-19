@@ -11,7 +11,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+    <div className="grid gap-6 grid-cols-1">
 
       {/* TODO: src/components <WidgetItem /> */}
       <WidgetItem title="Usuario desde S-Side">
@@ -19,6 +19,11 @@ export default async function DashboardPage() {
           <span>{ sesion.user?.name}</span>
           <span>{ sesion.user?.image}</span>
           <span>{ sesion.user?.email}</span>
+
+          <div>
+            { JSON.stringify( sesion )}
+          </div>
+
         </div>
       </WidgetItem>
       {/* TODO: Fin <WidgetItem /> */}
