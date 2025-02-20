@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'st2.depositphotos.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com'
       }
     ]
   }

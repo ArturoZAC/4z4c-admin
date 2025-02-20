@@ -4,10 +4,13 @@ import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 // import { useRouter } from "next/navigation";
 import { addTodo, deleteCompleted } from "../actions/todos-action";
+import { createTodo } from "../helpers/todos";
+import { useRouter } from "next/navigation";
 
 
 export const NewTodo = () => { 
 
+  const router = useRouter();
   // const router = useRouter();
   const [description, setDescription] = useState('');
 
@@ -16,7 +19,9 @@ export const NewTodo = () => {
 
     if( description.trim().length === 0 ) return;
 
-    await addTodo( description );
+    // await addTodo( description );
+    await createTodo(description);
+    router.refresh();
     setDescription('');
     // router.refresh();
   }
